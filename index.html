@@ -176,7 +176,331 @@
       font-size: 11px;
       color: #666;
     }
+/* =========================
+   MENU INTERACTIF
+========================= */
 
+.food-menu {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid #333;
+}
+
+/* Bouton principal */
+.menu-toggle {
+  width: 100%;
+  border: 1px solid #3b3b3b;
+  border-radius: 16px;
+  padding: 17px 18px;
+
+  background: linear-gradient(135deg, #171717, #252525);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  cursor: pointer;
+  text-align: left;
+
+  transition: transform .25s ease,
+              border-color .25s ease,
+              background .25s ease;
+}
+
+.menu-toggle:hover {
+  transform: translateY(-2px);
+  border-color: #777;
+}
+
+.menu-toggle > span:first-child {
+  font-size: 27px;
+}
+
+.menu-toggle > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.menu-toggle strong {
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.menu-toggle small {
+  color: #aaa;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+#menuArrow {
+  font-size: 25px;
+  transition: transform .35s ease;
+}
+
+#menuArrow.open {
+  transform: rotate(180deg);
+}
+
+
+/* Contenu fermé */
+.menu-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+
+  transform: translateY(-8px);
+
+  transition:
+    max-height .8s ease,
+    opacity .4s ease,
+    transform .4s ease;
+}
+
+
+/* Contenu ouvert */
+.menu-content.open {
+  max-height: 12000px;
+  opacity: 1;
+
+  transform: translateY(0);
+
+  padding-top: 28px;
+}
+
+
+/* Titre */
+.menu-title {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.menu-title > span {
+  font-size: 25px;
+}
+
+.menu-title h2 {
+  margin: 7px 0 5px;
+  font-size: 27px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.menu-title p {
+  margin: 0;
+  color: #999;
+  font-size: 13px;
+}
+
+
+/* Catégories */
+.menu-tabs {
+  display: flex;
+  gap: 8px;
+
+  overflow-x: auto;
+
+  padding: 4px 2px 13px;
+
+  margin-bottom: 15px;
+
+  scrollbar-width: none;
+}
+
+.menu-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-tab {
+  flex: 0 0 auto;
+
+  padding: 10px 14px;
+
+  border-radius: 50px;
+  border: 1px solid #444;
+
+  background: #181818;
+  color: #bbb;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: all .25s ease;
+}
+
+.menu-tab.active {
+  background: white;
+  color: #111;
+  border-color: white;
+}
+
+.menu-tab:hover {
+  border-color: #888;
+}
+
+
+/* Sections */
+.menu-section {
+  margin-top: 25px;
+  text-align: left;
+
+  animation: menuFade .4s ease;
+}
+
+.menu-section.hidden {
+  display: none;
+}
+
+.menu-section h3 {
+  margin: 0 0 12px;
+
+  padding-bottom: 9px;
+
+  border-bottom: 1px solid #333;
+
+  font-size: 18px;
+  color: white;
+}
+
+.menu-section h3 small {
+  float: right;
+  color: #888;
+  font-size: 11px;
+  font-weight: normal;
+}
+
+
+/* Chaque plat */
+.dish {
+  padding: 14px 2px;
+
+  border-bottom: 1px solid #292929;
+
+  transition:
+    background .2s ease,
+    padding .2s ease;
+}
+
+.dish:hover {
+  background: rgba(255,255,255,.025);
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.dish-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dish-top strong {
+  color: #f5f5f5;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.dish-top span {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+
+  white-space: nowrap;
+}
+
+.dish p {
+  margin: 6px 0 0;
+
+  color: #8f8f8f;
+
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+
+/* Petite touche Italie */
+.menu-title::after {
+  content: "";
+
+  display: block;
+
+  width: 80px;
+  height: 3px;
+
+  margin: 14px auto 0;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      to right,
+      #009246 0%,
+      #009246 33.33%,
+      #ffffff 33.33%,
+      #ffffff 66.66%,
+      #ce2b37 66.66%,
+      #ce2b37 100%
+    );
+}
+
+
+.menu-footer-text {
+  margin: 30px 0 5px;
+
+  text-align: center;
+
+  color: #aaa;
+
+  font-size: 13px;
+  font-style: italic;
+}
+
+
+/* Animation apparition */
+@keyframes menuFade {
+
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* Mobile */
+@media (max-width: 480px) {
+
+  .menu-toggle {
+    padding: 15px;
+  }
+
+  .menu-toggle strong {
+    font-size: 15px;
+  }
+
+  .menu-title h2 {
+    font-size: 23px;
+  }
+
+  .dish-top strong {
+    font-size: 13px;
+  }
+
+  .dish-top span {
+    font-size: 13px;
+  }
+
+}
   </style>
 </head>
 
@@ -267,12 +591,524 @@
       ♪ TikTok
     </a>
 
+<!-- =========================
+     MENU INTERACTIF
+========================= -->
 
+<section class="food-menu">
+
+  <button id="menuToggle" class="menu-toggle" type="button">
+    <span>🍽️</span>
+    <span>
+      <strong>Découvrir notre menu</strong>
+      <small>Nos spécialités italiennes</small>
+    </span>
+    <span id="menuArrow">⌄</span>
+  </button>
+
+  <div id="menuContent" class="menu-content">
+
+    <div class="menu-title">
+      <span>🇮🇹</span>
+      <h2>Notre Menu</h2>
+      <p>Découvrez les spécialités de I Cavalieri 5F</p>
+    </div>
+
+    <div class="menu-tabs">
+      <button class="menu-tab active" data-category="all">Tout</button>
+      <button class="menu-tab" data-category="pizza">🍕 Pizzas</button>
+      <button class="menu-tab" data-category="burger">🍔 Burgers</button>
+      <button class="menu-tab" data-category="pasta">🍝 Pâtes</button>
+      <button class="menu-tab" data-category="salade">🥗 Salades</button>
+      <button class="menu-tab" data-category="dessert">🍰 Desserts</button>
+      <button class="menu-tab" data-category="boisson">🥤 Boissons</button>
+    </div>
+
+    <!-- PIZZAS SPECIALES -->
+    <div class="menu-section" data-category="pizza">
+      <h3>🍕 Pizzas Spéciales <small>33 cm</small></h3>
+
+      <div class="dish">
+        <div class="dish-top">
+          <strong>Pizza 3 Couleurs</strong>
+          <span>15,50 €</span>
+        </div>
+        <p>Sauce tomate, mozzarella, roquette, tomate cerise, burrata, copeaux de parmesan</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top">
+          <strong>Pizza I Cavalieri</strong>
+          <span>15,50 €</span>
+        </div>
+        <p>Crème fraîche, mozzarella, crevettes, courgette, pesto, copeaux de parmesan, roquette, tomate cerise</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top">
+          <strong>Pizza Bresaola et Burrata</strong>
+          <span>16,50 €</span>
+        </div>
+        <p>Base tomate, mozzarella fior di latte, bresaola, burrata crémeuse, roquette, tomates cerises, copeaux de parmesan</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top">
+          <strong>Pizza Filoncino</strong>
+          <span>14,00 €</span>
+        </div>
+        <p>Mozzarella, crevettes, sauce rose, copeaux de parmesan, tomate cerise, roquette</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top">
+          <strong>Calzone</strong>
+          <span>12,00 €</span>
+        </div>
+        <p>Sauce tomate, mozzarella, jambon, champignons, œuf</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top">
+          <strong>Pizza Chef</strong>
+          <span>15,00 €</span>
+        </div>
+        <p>3 calzones au choix du chef</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top">
+          <strong>Pizza Special</strong>
+          <span>14,00 €</span>
+        </div>
+        <p>Bis de calzone au choix</p>
+      </div>
+    </div>
+
+    <!-- PIZZAS BASE TOMATE -->
+    <div class="menu-section" data-category="pizza">
+      <h3>🍅 Pizzas Base Tomate <small>26 / 33 cm</small></h3>
+
+      <div class="dish">
+        <div class="dish-top">
+          <strong>Margherita</strong>
+          <span>7 € / 11 €</span>
+        </div>
+        <p>Sauce tomate, mozzarella, basilic</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Wurstel</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, wurstel, frites</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Diavola</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, poivrons, olives, chorizo</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Hawaï</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, ananas, jambon</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>México</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, viande hachée, poivrons, olives</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Americaine</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, viande hachée, oignons caramélisés</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Thon</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, thon, oignons rouges</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Calabrese</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, gorgonzola, oignons rouges, chorizo, ail</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Regina</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, jambon, champignons, olive</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Bismarc</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, jambon, asperges, œuf</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Vegetariaine</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, aubergine, poivrons, courgettes</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Toulousaine</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, saucisse, gorgonzola, champignons</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Méditerranée</strong><span>10 € / 14 €</span></div>
+        <p>Sauce tomate, mozzarella, fruits de mer</p>
+      </div>
+    </div>
+
+    <!-- PIZZAS CREME FRAICHE -->
+    <div class="menu-section" data-category="pizza">
+      <h3>🤍 Pizzas Crème Fraîche <small>26 / 33 cm</small></h3>
+
+      <div class="dish">
+        <div class="dish-top"><strong>4 Fromage</strong><span>10 € / 14 €</span></div>
+        <p>Crème fraîche, mozzarella, gorgonzola, roquefort, bri</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Chèvre Miel</strong><span>10 € / 14 €</span></div>
+        <p>Crème fraîche, mozzarella, chèvre miel</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Norvegiènne</strong><span>10 € / 14 €</span></div>
+        <p>Crème fraîche, mozzarella, courgettes, saumon</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>3 Jambon</strong><span>10 € / 14 €</span></div>
+        <p>Crème fraîche, mozzarella, jambon, lardons, chorizo</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Ville Rose</strong><span>10 € / 14 €</span></div>
+        <p>Crème fraîche, mozzarella, pomme de terre, parmesan, saucisse</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Kebab</strong><span>10 € / 14 €</span></div>
+        <p>Crème fraîche, mozzarella, kebab, oignons rouges</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Trevise</strong><span>10 € / 14 €</span></div>
+        <p>Crème fraîche, mozzarella, gorgonzola, radicchio, parmesan</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Truffe</strong><span>10 € / 14 €</span></div>
+        <p>Crème fraîche, mozzarella, truffe, roquette, copeaux de parmesan</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Indienne</strong><span>10 € / 14 €</span></div>
+        <p>Crème fraîche, mozzarella, poulet mariné curry, champignons</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Savoyarde</strong><span>10 € / 14 €</span></div>
+        <p>Crème fraîche, mozzarella, pommes de terre, lardons, gorgonzola</p>
+      </div>
+    </div>
+
+    <!-- BURGERS -->
+    <div class="menu-section" data-category="burger">
+      <h3>🍔 Burgers <small>Seul / Menu</small></h3>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Chicken Burger</strong><span>7,90 € / 11,90 €</span></div>
+        <p>Poulet pané, salade, tomate, sauce burger</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Veggie Burger</strong><span>7,90 € / 11,90 €</span></div>
+        <p>Veggie patty, salade, courgette grillée, sauce burger</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Cheese Burger</strong><span>8,90 € / 12,90 €</span></div>
+        <p>125g bœuf haché, salade, oignons rouges, cheddar, sauce burger</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Gurmet Burger</strong><span>9,90 € / 13,90 €</span></div>
+        <p>150g de bœuf haché, tomate, roquette, salade, œuf, oignons frits, sauce burger</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Crispy Burger</strong><span>10,90 € / 14,90 €</span></div>
+        <p>Pain noir, 150g bœuf haché, salade, bacon, oignons frits, cheddar, sauce burger</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Cavalieri Burger</strong><span>11,90 € / 15,90 €</span></div>
+        <p>150g bœuf haché, salade, bacon, oignons caramélisés, œuf, cheddar, sauce burger</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>BBQ Burger</strong><span>11,90 € / 15,90 €</span></div>
+        <p>Pain noir, 150g bœuf haché, salade, bacon, oignons caramélisés, chips, cheddar, sauce BBQ</p>
+      </div>
+    </div>
+
+    <!-- SALADES -->
+    <div class="menu-section" data-category="salade">
+      <h3>🥗 Salades</h3>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Salade au Thon</strong><span>8,90 €</span></div>
+        <p>Laitue, roquette, tomates cerises, maïs, thon, mozzarellini, olive</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Salade Grecque</strong><span>9,50 €</span></div>
+        <p>Salade, tomates, concombre, feta, olives noires, oignons rouges et origan</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Salade Cesare</strong><span>9,50 €</span></div>
+        <p>Laitue, poulet grillé, œuf, croûtons, tomates cerise, copeaux de parmesan</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Salade Caprese</strong><span>9,50 €</span></div>
+        <p>Mozzarella de buffal, tomates fraîches, feuilles basilic frais, huile d’olive</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Burrata & Bresaola</strong><span>11,50 €</span></div>
+        <p>Roquette, bresaola, burrata crémeuse, tomates cerises, copeaux de parmigiano et crème balsamique</p>
+      </div>
+    </div>
+
+    <!-- PATES -->
+    <div class="menu-section" data-category="pasta">
+      <h3>🍝 Spaghetti</h3>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Spaghetti Aglio Olio</strong><span>8,90 €</span></div>
+        <p>Ail, huile d’olive, piment, persil</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Spaghetti Pomodoro Basilico</strong><span>9,90 €</span></div>
+        <p>Sauce tomate, basilic, mozzarella</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Spaghetti Carbonara</strong><span>10,90 €</span></div>
+        <p>Lardons, jaune d’œuf, crème fraîche, poivre, parmesan</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Spaghetti à la Puttanesca</strong><span>10,90 €</span></div>
+        <p>Sauce tomate, olive noir, câpres, anchois, ail et piment</p>
+      </div>
+
+      <h3>🍝 Penne</h3>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Penne aux Thon</strong><span>9,00 €</span></div>
+        <p>Sauce tomate, piment, basilic, ail, mozzarella</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Penne 4 Fromage</strong><span>11,90 €</span></div>
+        <p>Gorgonzola, roquefort, parmesan, crème fraîche</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Penne à la Norma</strong><span>11,90 €</span></div>
+        <p>Aubergines, sauce tomate, basilic et ricotta</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Penne Pesto et Burrata</strong><span>11,90 €</span></div>
+        <p>Courgette, tomate cerises, crème fraîche, pesto fait maison, burrata</p>
+      </div>
+
+      <h3>🍝 Tagliatelle</h3>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Tagliatelle Bolognaise</strong><span>11,90 €</span></div>
+        <p>Bœuf haché, sauce tomate fait maison</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Tagliatelle Champignons et Saucisse</strong><span>12,90 €</span></div>
+        <p>Champignons, saucisse, crème fraîche, roquette, copeaux de parmesan</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Tagliatelle I Cavalieri</strong><span>12,90 €</span></div>
+        <p>Crevettes et courgettes dans une sauce crémeuse au curry</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Tagliatelle Fruit de Mer</strong><span>13,90 €</span></div>
+        <p>Fruit de mer aux sauce tomate</p>
+      </div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="menu-section" data-category="dessert">
+      <h3>🍰 Desserts</h3>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Tiramisu</strong><span>4,50 €</span></div>
+        <p>Café, caramel, fraise, pistache</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Panna Cotta</strong><span>4,50 €</span></div>
+        <p>Fraise, caramel, pistache</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Crème Brûlée</strong><span>4,50 €</span></div>
+        <p>Caramel</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Moelleux</strong><span>4,50 €</span></div>
+        <p>Chocolat</p>
+      </div>
+    </div>
+
+    <!-- BOISSONS -->
+    <div class="menu-section" data-category="boisson">
+      <h3>🥤 Boissons Froides</h3>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Boissons gazeuses</strong><span>2,00 €</span></div>
+        <p>Coca-Cola, Fanta, Pepsi, 7Up, Sprite, Schweppes</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Boissons sans gaz</strong><span>2,00 €</span></div>
+        <p>Lipton, Tropical, Oasis, eau, Fuze Tea</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Bouteille en verre</strong><span>3,00 €</span></div>
+        <p>Coca-Cola, Schweppes, Orangina</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>Bière sans alcool</strong><span>3,50 €</span></div>
+        <p>Peroni, Corona, Heineken</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-top"><strong>San Pellegrino</strong><span>3,00 €</span></div>
+      </div>
+
+      <h3>☕ Boissons Chaudes</h3>
+
+      <div class="dish"><div class="dish-top"><strong>Espresso</strong><span>2,00 €</span></div></div>
+      <div class="dish"><div class="dish-top"><strong>Double Espresso</strong><span>3,00 €</span></div></div>
+      <div class="dish"><div class="dish-top"><strong>Capuccino</strong><span>2,80 €</span></div></div>
+      <div class="dish"><div class="dish-top"><strong>Latte Machiato</strong><span>3,00 €</span></div></div>
+      <div class="dish"><div class="dish-top"><strong>Thé</strong><span>3,00 €</span></div></div>
+    </div>
+
+    <p class="menu-footer-text">
+      🇮🇹 Buon appetito !
+    </p>
+
+  </div>
+</section>
+    
     <footer>
       I Cavalieri 5F • Café • Restaurant • Pizzeria
     </footer>
 
   </div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+  const menuToggle = document.getElementById("menuToggle");
+  const menuContent = document.getElementById("menuContent");
+  const menuArrow = document.getElementById("menuArrow");
+
+  const tabs = document.querySelectorAll(".menu-tab");
+  const sections = document.querySelectorAll(".menu-section");
+
+  /* =========================
+     OUVRIR / FERMER LE MENU
+  ========================= */
+
+  menuToggle.addEventListener("click", function () {
+
+    menuContent.classList.toggle("open");
+    menuArrow.classList.toggle("open");
+
+    if (menuContent.classList.contains("open")) {
+      setTimeout(() => {
+        menuContent.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 250);
+    }
+
+  });
+
+
+  /* =========================
+     FILTRER LES CATEGORIES
+  ========================= */
+
+  tabs.forEach(function (tab) {
+
+    tab.addEventListener("click", function () {
+
+      const selectedCategory = this.dataset.category;
+
+      /* Retirer active de tous les boutons */
+      tabs.forEach(function (button) {
+        button.classList.remove("active");
+      });
+
+      /* Activer le bouton sélectionné */
+      this.classList.add("active");
+
+
+      /* Afficher / masquer les catégories */
+      sections.forEach(function (section) {
+
+        const category = section.dataset.category;
+
+        if (
+          selectedCategory === "all" ||
+          category === selectedCategory
+        ) {
+
+          section.classList.remove("hidden");
+
+          /* Relancer petite animation */
+          section.style.animation = "none";
+
+          section.offsetHeight;
+
+          section.style.animation = "menuFade .4s ease";
+
+        } else {
+
+          section.classList.add("hidden");
+
+        }
+
+      });
+
+    });
+
+  });
+
+});
+</script>
+  
 </body>
 </html>
